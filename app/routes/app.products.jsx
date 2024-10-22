@@ -9,23 +9,29 @@ export const loader = async ({ request }) => {
   const { admin } = await authenticate.admin(request);
 
   const response = await admin.graphql(`
-        #graphql
-        query fetchProducts {
-            products(first: 10) {
-                edges {
-                    node {
-                        id
-                        title
-                        handle
-                        featuredImage {
-                            url
-                            altText
+    query fetchProducts {
+        products(first: 10) {
+            edges {
+                node {
+                    id
+                    title
+                    handle
+                    status
+                    priceRangeV2 {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
                         }
+                    }
+                    featuredImage {
+                        url
+                        altText
                     }
                 }
             }
         }
-    `);
+    }
+`);
 
   const productsData = (await response.json()).data;
   console.log(productsData);
@@ -46,7 +52,8 @@ export default function Products() {
   };
 
   const renderItem = (item) => {
-    const { id, title, handle, featuredImage } = item.node;
+    const { id, title, handle, featuredImage, status, priceRangeV2 } = item.node;
+  
     return (
       <ResourceItem
         id={id}
@@ -58,7 +65,11 @@ export default function Products() {
         <Text as="h5" variant="bodyMd">
           {title}
         </Text>
-        <div>{handle}</div>
+        <div>Handle: {handle}</div>
+        <div>Status: {status}</div>
+        <div>
+          Price: {priceRangeV2.maxVariantPrice.amount} {priceRangeV2.maxVariantPrice.currencyCode}
+        </div>
       </ResourceItem>
     );
   };

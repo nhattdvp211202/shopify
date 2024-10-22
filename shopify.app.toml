@@ -3,7 +3,7 @@
 client_id = "0f27ef3cbe2adebe1b7f43edaf6ddd04"
 name = "Tigren"
 handle = "tigren-6"
-application_url = "https://sends-ron-photos-handheld.trycloudflare.com"
+application_url = "https://licence-francis-dis-chapel.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://sends-ron-photos-handheld.trycloudflare.com/auth/callback",
-  "https://sends-ron-photos-handheld.trycloudflare.com/auth/shopify/callback",
-  "https://sends-ron-photos-handheld.trycloudflare.com/api/auth/callback"
+  "https://licence-francis-dis-chapel.trycloudflare.com/auth/callback",
+  "https://licence-francis-dis-chapel.trycloudflare.com/auth/shopify/callback",
+  "https://licence-francis-dis-chapel.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
